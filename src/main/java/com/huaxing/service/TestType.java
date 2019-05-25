@@ -10,6 +10,5 @@ public class TestType {
         studentService.selectStudent();
         System.out.println("提交1dev333");
         System.out.println("dev add1333333");
-        System.out.println("dev add133333344");
     }
 }
