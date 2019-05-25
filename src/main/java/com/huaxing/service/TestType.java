@@ -9,6 +9,6 @@ public class TestType {
         StudentServiceImpl studentService= (StudentServiceImpl)ctx.getBean("a") ;
         studentService.selectStudent();
         System.out.println("提交1dev333");
-        System.out.println("dev add");
+        System.out.println("dev add1");
     }
 }
