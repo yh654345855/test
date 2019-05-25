@@ -7,6 +7,6 @@ public class TestType {
     public static void main(String[] args) {
         ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
         StudentServiceImpl studentService= (StudentServiceImpl)ctx.getBean("a") ;
-        studentService.selectStudent();
+            studentService.selectStudent();
     }
 }
