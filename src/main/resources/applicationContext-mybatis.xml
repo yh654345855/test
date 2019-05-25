@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://47.104.196.10:3306/javatest?useUnicode=true&amp;characterEncoding=gbk&amp;serverTimezone=GMT&amp;useSSL=false">
+
+        </property>
+        <property name="username" value="root"/>
+        <property name="password" value="mysql"/>
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath*:com/huaxing/dao/**/*.xml"/>   <!--用来配置xml文件的扫描路径-->
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.huaxing.dao"/>       <!-- 用来配置接口bean的扫描路径-->
+    </bean>
+
+    <context:component-scan base-package="com.huaxing.service,com.huaxing.dao"/>  <!--自动扫描指定包下的注解-->
+</beans>
